@@ -2,7 +2,7 @@
 # Bluetooth character device driver
 
 ###############################################################################
-# Necessary Check
+
 
 
 ccflags-y += -DCONFIG_MP_WAKEUP_SOURCE_SYSFS_STAT
