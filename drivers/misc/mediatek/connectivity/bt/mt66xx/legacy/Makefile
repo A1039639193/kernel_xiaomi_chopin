@@ -3,7 +3,7 @@ MTK_PLATFORM := $(subst ",,$(CONFIG_MTK_PLATFORM))
 # Bluetooth character device driver
 
 ###############################################################################
-# Necessary Check
+
 
 
 ifneq ($(CFG_BT_PM_QOS_CONTROL),)
