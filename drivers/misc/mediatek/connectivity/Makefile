@@ -50,17 +50,11 @@ endif
 
         ifneq (,$(filter $(CONFIG_MTK_COMBO_CHIP), "CONSYS_6885" "CONSYS_6893"))
             export MTK_COMBO_CHIP=CONNAC2X2_SOC3_0
-            PATH_TO_WMT_DRV      = conninfra
         else ifneq (,$(filter $(CONFIG_MTK_COMBO_CHIP), "CONSYS_6779" "CONSYS_6873" "CONSYS_6853"))
             export MTK_COMBO_CHIP=CONNAC2X2
-            PATH_TO_WMT_DRV      = common
         else
             export MTK_COMBO_CHIP=CONNAC
-            PATH_TO_WMT_DRV      = common
         endif
-
-        PATH_TO_WLAN_CHR_DRV = wlan/adaptor
-        PATH_TO_WLAN_DRV     = wlan/core/gen4m
 
         # for gen4m options
         export CONFIG_MTK_COMBO_WIFI_HIF=axi
@@ -86,15 +80,14 @@ endif
         # Do build-in for xxx.c checking
         subdir-ccflags-y += -D MTK_WCN_REMOVE_KERNEL_MODULE
         subdir-ccflags-y += -D MTK_WCN_BUILT_IN_DRIVER
-        obj-y += $(PATH_TO_WMT_DRV)/
-        obj-y += $(PATH_TO_WLAN_CHR_DRV)/
-        obj-y += $(PATH_TO_WLAN_DRV)/
-	obj-y += gps/
+        obj-y += common/
+        obj-y += wlan/adaptor/
+        obj-y += wlan/core/gen4m/
+        obj-y += gps/
 
         # For FM built-in mode
         # for fmradio options
-	
-	FM_CHIP_ID := $(patsubst CONSYS_%,%,$(subst ",,$(CONFIG_MTK_COMBO_CHIP)))
+        FM_CHIP_ID := $(patsubst CONSYS_%,%,$(subst ",,$(CONFIG_MTK_COMBO_CHIP)))
         $(info FM_CHIP_ID is [${FM_CHIP_ID}])
 
         ifneq (,$(filter $(CONFIG_MTK_COMBO_CHIP), "CONSYS_6885"))
@@ -144,10 +137,10 @@ endif
         $(info CFG_BUILD_CONNAC2 is [${CFG_BUILD_CONNAC2}])
 
         obj-y += fmradio/
-
     endif
+
 # Bluetooth
-obj-$(CONFIG_MTK_COMBO_BT) += bt/mt66xx/legacy/
+# obj-$(CONFIG_MTK_COMBO_BT) += bt/mt66xx/legacy/
 
 # Otherwise we were called directly from the command line;
 # invoke the kernel build system.
