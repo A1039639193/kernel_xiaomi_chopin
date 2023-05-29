@@ -3,7 +3,7 @@ MTK_PLATFORM := $(subst ",,$(CONFIG_MTK_PLATFORM))
 # Bluetooth character device driver
 
 ###############################################################################
-# Necessary Check
+
 
 
 $(warning connac20 bt driver: _MTK_BT_CHIP = $(_MTK_BT_CHIP))
