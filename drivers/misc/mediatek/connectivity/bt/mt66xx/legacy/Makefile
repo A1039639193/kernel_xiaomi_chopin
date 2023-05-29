@@ -5,13 +5,6 @@ MTK_PLATFORM := $(subst ",,$(CONFIG_MTK_PLATFORM))
 ###############################################################################
 # Necessary Check
 
-ifeq ($(AUTOCONF_H),)
-    $(error AUTOCONF_H is not defined)
-endif
-
-ifndef TOP
-    TOP := $(srctree)/..
-endif
 
 ifneq ($(CFG_BT_PM_QOS_CONTROL),)
     $(warning set PM_QOS_CONTROL=1)
